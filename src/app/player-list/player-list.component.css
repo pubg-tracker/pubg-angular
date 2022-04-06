@@ -1,0 +1,38 @@
+:root {
+    --clr-primary: #FACC15;
+}
+
+.list__item {
+    min-width: 300px;
+    width: 35%;
+    display: flex;
+    /* flex-wrap: wrap; */
+    padding: 1.2rem;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.list__detail {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+
+.list__img {
+    width: 80px;
+    /* border: 1px solid red; */
+}
+
+.list__btn {
+    background: none;
+    background-color: var(--clr-primary);
+    color: inherit;
+    border: none;
+    padding: 0.2rem 1.5rem;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    display: flex;
+    place-content: center;
+}

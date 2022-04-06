@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="home__section">
+        <div class="section__header">
+            <div class="section__content">
+                <p class="section__title">
+                    Welcome to Your one place to track PUBG Info
+                </p>
+                <a class="section__action" href="#main">
+                    Let's go
+                </a>
+            </div>
+        </div>
+        <div class="section__banner">
+            <img src="../../assets/home_img1.svg" alt="home banner image 1" class="section__img img1">
+            <img src="../../assets/home_img2.svg" alt="home banner image 2" class="section__img img2">
+            <img src="../../assets/home_img3.svg" alt="home banner image 3" class="section__img img3">
+        </div>
+    </div>
+    <div class="main" id="main">
+        <div class="main__item" *ngFor="let item of items">
+            <div (click)="onNavigate(item.route)">
+                <img src="{{item.img}}" alt="" class="item__img">
+                <p class="item__title">
+                    {{ item.title }}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

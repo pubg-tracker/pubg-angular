@@ -1,0 +1,30 @@
+.navbar {
+    padding: 1.5rem 0;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar__title {
+    /* font-weight: bold; */
+    font-size: 1.1rem;
+}
+
+.navbar__items {
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.navbar__items * {
+    cursor: pointer;
+}
+
+.img-circular {
+    width: 30px;
+    height: 30px;
+    /* background-image: url('../../assets/user_prof.svg'); */
+    background-size: cover;
+    display: block;
+}

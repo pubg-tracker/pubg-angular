@@ -1,0 +1,9 @@
+.card{
+    border: 1px solid lightgray;
+    box-shadow: 0.5px;
+    margin-top: 5px;
+}
+.error_display{
+    margin-left: 4px;
+    margin-bottom: 10px;
+}

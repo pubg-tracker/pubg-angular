@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="card col-sm-6 offset-3">
+        <div class="card-body">
+            <div class="text-center card-title"><h1>Login</h1></div>
+
+            <div class="card-text" >
+                <form userForm="ngForm" action="#" method="#">
+                    <div class="form-group">
+                        <!-- <label for="username">Username</label> -->
+                        <input type="text" #name="ngModel" [(ngModel)]="userLogin.username" [class.is-invalid]="name.invalid && name.touched" 
+                        name="username" class="form-control" placeholder="Username" id="username" required minlength="3">
+
+                        <div *ngIf="name.errors && (name.invalid && name.touched)">
+                            <small class="text-danger" *ngIf="name.errors?.['required']">Name is required</small>
+                            <small class="text-danger" *ngIf="name.errors?.['minlength']">Username doesn't exist</small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <!-- <label for="password">Password</label> -->
+                        <input type="password" #password="ngModel" [(ngModel)]="userLogin.password"  [class.is-invalid]="password.invalid && password.touched"
+                        pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$" required name="password" class="form-control" placeholder="Password" id="password">
+                        
+                        <div *ngIf="password.errors && (password.invalid && password.touched)">
+                            <small class="text-danger" *ngIf="password.errors?.['required']">Password is required</small>
+                            <small class="text-danger" *ngIf="password.errors?.['pattern']">Password doesn't exist</small>
+                        </div>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                         Remember me
+                        </label>
+                      </div>
+                      
+                    <div>
+                        <button type="submit" class="btn btn-primary">submit</button>
+                   <a class="stol" href="" routerLink="/signup" routerLinkActive="active">Sign up</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+
+    </div>
+</div>

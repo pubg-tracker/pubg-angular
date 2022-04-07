@@ -1,1 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    
+ }
+
+
+ /* body{
+    background: url("https://wallpapercave.com/dwp2x/wp3276763.jpg") no-repeat fixed;
+ }
+.card{
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+}
+.form-control{
+    background-color: rgba(0,0,0,0.5);
+}
+.form-control placeholder{
+    color: white;
+}
+.navbar__title{
+    color: lightgrey;
+} */
+
+
+.stol{
+    color: darkslategray;
+    margin-left: 20px;
+}
+.card-title h1{
+    font-size: x-large;
+}
+
+
+/* .stol{
+    color: lightgray;
+} */

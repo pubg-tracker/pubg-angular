@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --clr-primary: #facc15;
+  --clr-secondry: #444a59;
+  --clr-text-dark: #000000;
+  --clr-text-light: #ffffff;
+  --clr-link: #e14923;
+  --fs-title: 44px;
+  --fs-nav: 23px;
+  --fs-btn: 20px;
+}

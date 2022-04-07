@@ -10,13 +10,16 @@
         </div>
     </div>
     <div class="lists">
+        <div *ngIf="loading" class="loading">
+            <img src="../../assets/Spinner-1s-200px.svg" alt="">
+        </div>
         <div *ngFor="let post of POSTS | paginate : {
                 itemsPerPage: tableSize,
                 currentPage: page,
                 totalItems: count
               };
         let i = index">
-            <app-list-item [id]="post.login.username" [date]="post.dob.date"></app-list-item>
+            <app-list-item [parent]="parentComp" [id]="post.login.username" [date]="post.dob.date"></app-list-item>
         </div>
     </div>
 

@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tournaments.component.css']
 })
 export class TournamentsComponent implements OnInit {
+  parentName: string = 'tournaments';
 
   constructor() { }
 

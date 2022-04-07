@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PostService } from '../post.service';
 
 @Component({
@@ -13,6 +13,9 @@ export class ListComponent implements OnInit {
   tableSize = 7;
   tableSizes = [3, 6, 9, 12];
   responsiveP: boolean = true;
+  loading: boolean = true;
+
+  @Input() parentComp: string = '';
 
   constructor(private postService: PostService) { }
 
@@ -24,6 +27,7 @@ export class ListComponent implements OnInit {
     this.postService.getAllPosts()
       .subscribe(
         response => {
+          this.loading = false;
           this.POSTS = response.results;
           console.log(response);
         });

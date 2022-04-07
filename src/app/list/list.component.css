@@ -18,6 +18,13 @@
     padding: 1rem 2rem;
 }
 
+
+.loading {
+    /* margin: 0 auto; */
+    display: flex;
+    justify-content: center;
+}
+
 .custom-select {
     -webkit-appearance: button;
     -moz-appearance: button;

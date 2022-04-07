@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./favourite-matches.component.css']
 })
 export class FavouriteMatchesComponent implements OnInit {
-
+  parentName: string = 'favourite-matches'
   constructor() { }
 
   ngOnInit(): void {

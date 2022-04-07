@@ -1,6 +1,117 @@
-.player-info {
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@400;500&display=swap");
+*,
+::before,
+::after {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+
+.nav {
   display: flex;
-  flex-direction: column;
+  width: 1286px;
+  height: 66px;
+  margin-top: 78px;
+  margin: auto;
+  padding-top: 2%;
+}
+
+.nav .title {
+  flex-grow: 1;
+  font-style: normal;
+  font-weight: 500;
+  font-size: var(--fs-title);
+  line-height: 66px;
+  color: var(--clr-secondry);
+}
+
+.nav .nav-items {
+  padding: 0px 5px;
+  margin: 5px 20px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: var(--fs-nav);
+  line-height: 42px;
+  /* identical to box height */
+  outline: none;
+  color: var(--clr-text-dark);
+  border-radius: 15%;
+}
+
+.nav .nav-items:hover,
+.nav .nav-items:focus {
+  color: var(--clr-link);
+}
+
+.hero {
+  display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 122px;
+  margin-bottom: 94px;
+}
+
+.profile-details {
+  padding: 20px 2px;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  line-height: 44px;
+  color: var(--clr-text-dark);
+}
+
+.bottom {
+  display: flex;
+  justify-content: center;
+  margin-top: 124px;
+  margin-bottom: 116px;
+}
+
+.bottom .btn {
+  width: 250px;
+  height: 75px;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: var(--fs-btn);
+  line-height: 24px;
+  border-radius: 50px;
+  color: var(--clr-text-dark);
+  background: var(--clr-primary);
+  border: none;
+  cursor: pointer;
+}
+
+.bottom .btn:hover,
+.bottom .btn:focus {
+  background: var(--clr-secondry);
+  color: var(--clr-text-light);
+}
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted var(--clr-text-dark);
+}
+
+.profile-image .tooltiptext {
+  visibility: hidden;
+  width: 60px;
+  font-size: 15px;
+  transform: translate(-90%, 145%);
+  background-color: var(--clr-secondry);
+  color: var(--clr-text-light);
+  text-align: center;
+  border-radius: 10px;
+  padding: 0px 0;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.profile-image:hover .tooltiptext {
+  visibility: visible;
 }

@@ -1,27 +1,62 @@
-<div class="player-info">
-  <h2>player id {{ player.id }}</h2>
-  <h2>player status {{ player.status }}</h2>
-  <h2>player DBNOs {{ player.DBNOs }}</h2>
-  <h2>player assists {{ player.assists }}</h2>
-  <h2>player boosts {{ player.boosts }}</h2>
-  <h2>player damageDealt {{ player.damageDealt }}</h2>
-  <h2>player deathType {{ player.deathType }}</h2>
-  <h2>player headshotKills {{ player.headshotKills }}</h2>
-  <h2>player heals {{ player.heals }}</h2>
-  <h2>player killPlace {{ player.killPlace }}</h2>
-  <h2>player killStreaks {{ player.killStreaks }}</h2>
-  <h2>player kills {{ player.kills }}</h2>
-  <h2>player longestKill {{ player.longestKill }}</h2>
-  <h2>player name {{ player.name }}</h2>
-  <h2>player playerId{{ player.playerId }}</h2>
-  <h2>player revives {{ player.revives }}</h2>
-  <h2>player rideDistance {{ player.rideDistance }}</h2>
-  <h2>player roadKills {{ player.roadKills }}</h2>
-  <h2>player swimDistance {{ player.swimDistance }}</h2>
-  <h2>player teamKills {{ player.teamKills }}</h2>
-  <h2>player timeSurvived {{ player.timeSurvived }}</h2>
-  <h2>player vehicleDestroys {{ player.vehicleDestroys }}</h2>
-  <h2>player walkDistance {{ player.walkDistance }}</h2>
-  <h2>player weaponsAcquired {{ player.weaponsAcquired }}</h2>
-  <h2>player winPlace {{ player.winPlace }}</h2>
-</div>
+<section class="nav">
+  <div class="title">Pubg Tracker</div>
+  <div class="nav-items">Home</div>
+  <div class="nav-items">
+    Logout
+    <!-- <h3>status {{ player.status }}</h3> -->
+  </div>
+  <div class="nav-items">
+    <div class="profile-image">
+      <img
+        src="../../assets/account.svg"
+        alt="account profile"
+        height="51px"
+        width="51px"
+      />
+      <span class="tooltiptext">Profile</span>
+    </div>
+  </div>
+</section>
+<section class="hero">
+  <img
+    src="../../assets/hero.svg"
+    alt="main player illustration"
+    class="hero-image"
+    width="355px"
+    height="366px"
+  />
+</section>
+<section class="profile-details">
+  <div class="player-info1">
+    <h3>Id : {{ player.id }}</h3>
+    <h3>Player Id : {{ player.playerId }}</h3>
+    <h3>Name : {{ player.name }}</h3>
+    <h3>Win Place : {{ player.winPlace }}</h3>
+    <h3>DBNOs : {{ player.DBNOs }}</h3>
+    <h3>Assists : {{ player.assists }}</h3>
+    <h3>Boosts : {{ player.boosts }}</h3>
+    <h3>Damage Dealt : {{ player.damageDealt }}</h3>
+    <h3>Death Type : {{ player.deathType }}</h3>
+    <h3>Headshot Kills : {{ player.headshotKills }}</h3>
+    <h3>Heals : {{ player.heals }}</h3>
+    <h3>Kill Streaks : {{ player.killStreaks }}</h3>
+  </div>
+  <div class="player-info2">
+    <h3>Vehicle Destroys : {{ player.vehicleDestroys }}</h3>
+    <h3>Swim Distance : {{ player.swimDistance }}</h3>
+    <h3>Walk Distance : {{ player.walkDistance }}</h3>
+    <h3>Ride Distance : {{ player.rideDistance }}</h3>
+    <h3>Weapons Acquired : {{ player.weaponsAcquired }}</h3>
+    <h3>Road Kills : {{ player.roadKills }}</h3>
+    <h3>Kill Place : {{ player.killPlace }}</h3>
+    <h3>Revives : {{ player.revives }}</h3>
+    <h3>Team Kills : {{ player.teamKills }}</h3>
+    <h3>Longest Kill : {{ player.longestKill }}</h3>
+    <h3>Kills : {{ player.kills }}</h3>
+    <h3>Time Survived : {{ player.timeSurvived }}</h3>
+  </div>
+</section>
+
+<section class="bottom">
+  <button class="btn">Add To Favourite</button>
+</section>

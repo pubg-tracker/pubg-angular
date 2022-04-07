@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { FavouriteMatchesComponent } from './favourite-matches/favourite-matches.component';
 import { FavouritePlayersComponent } from './favourite-players/favourite-players.component';
 import { GlobalPlayersComponent } from './global-players/global-players.component';
 import { HomeComponent } from './home/home.component';
+import { TournamentsComponent } from './tournaments/tournaments.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'tournaments', component: TournamentsComponent },
+  { path: 'favourite-matches', component: FavouriteMatchesComponent },
   { path: 'global-players', component: GlobalPlayersComponent },
   { path: 'favourite-players', component: FavouritePlayersComponent },
   { path: 'not-found', component: ErrorPageComponent, data: { message: 'Page not found!' } },

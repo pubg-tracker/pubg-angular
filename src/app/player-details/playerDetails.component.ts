@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Player } from '../models/playerDetails';
 
 @Component({
@@ -64,7 +65,11 @@ export class PlayerDetailsComponent implements OnInit {
   // 				"winPlace": 10
 
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void { }
+
+  navigateTo() {
+    this.router.navigate(['favourite-players'])
+  }
 }

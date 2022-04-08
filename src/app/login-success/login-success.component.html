@@ -4,10 +4,10 @@
             <img src="../../assets/success.svg" alt="">
         </div>
         <div class="banner__text">
-            <p>Login is Successfull</p>
+            <p>{{ successMessage }}</p>
         </div>
         <div class="banner__action">
-            <a class="section__action" href="#main">
+            <a class="section__action" (click)="navigateToHome()">
                 Let's go
             </a>
         </div>

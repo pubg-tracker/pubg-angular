@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Data, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-success',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login-success.component.css']
 })
 export class LoginSuccessComponent implements OnInit {
-
-  constructor() { }
+  successMessage: any;
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
+    this.successMessage = this.route.snapshot.paramMap.get('message');
+  }
+
+  navigateToHome() {
+    this.router.navigate(['home']);
   }
 
 }

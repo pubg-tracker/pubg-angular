@@ -11,15 +11,15 @@
 
                 <form class="card-text" userForm="ngForm" action="#" method="#">
                     <div class="form-group">
-                        <!-- <label for="username">Username</label> -->
-                        <input type="text" #name="ngModel" [(ngModel)]="userLogin.username"
-                            [class.is-invalid]="name.invalid && name.touched" name="username" class="form-control"
-                            placeholder="Username" id="username" required minlength="3">
-
-                        <div *ngIf="name.errors && (name.invalid && name.touched)">
-                            <small class="text-danger" *ngIf="name.errors?.['required']">Name is required</small>
-                            <small class="text-danger" *ngIf="name.errors?.['minlength']">Username doesn't
-                                exist</small>
+                        <!-- <label for="email">email</label> -->
+                        <input type="email" #email="ngModel" [class.is-invalid]="email.invalid && email.touched"
+                            [(ngModel)]="userLogin.useremail"
+                            pattern="(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)" name="email"
+                            class="form-control" placeholder="Email" id="email" required>
+                        <!-- <small class="text-danger" [class.d-none]="email.valid || email.untouched">correct email id is required</small> -->
+                        <div *ngIf="email.errors && (email.invalid && email.touched)">
+                            <small class="text-danger" *ngIf="email.errors?.['required']">email is required </small>
+                            <small class="text-danger" *ngIf="email.errors?.['pattern']">Invalid email id</small>
                         </div>
                     </div>
                     <div class="form-group">
@@ -44,8 +44,8 @@
                     </div>
 
                     <div class="form-action">
-                        <button type="submit" class="btn btn-primary">Login</button>
-                        <a class="stol" href="" routerLink="/signup" routerLinkActive="active">Sign up</a>
+                        <button (click)="validateUser()" type="submit" class="btn btn-primary">Login</button>
+                        <a class="stol" href="" routerLink="/signup">Sign up</a>
                     </div>
                 </form>
 

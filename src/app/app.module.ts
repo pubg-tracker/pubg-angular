@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +22,8 @@ import { SignupComponent } from './signup/signup.component';
 import { FormsModule } from '@angular/forms';
 import { LoginSuccessComponent } from './login-success/login-success.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
+import { CanActivateRouteGuard } from './services/can-activate-route.guard';
+import { GlobalErrorHandlerService } from './services/global-error-handler.service';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,37 @@ import { UserEditComponent } from './user-edit/user-edit.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: ErrorHandler, useClass: GlobalErrorHandlerService }, CanActivateRouteGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+
+/*
+
+user.json 
+
+user : [
+  { 
+    name: string,
+    pass:
+    favouriteplayers: [
+      {}
+    ]
+  }
+]
+
+globalPlayers:[
+
+]
+
+players: [
+  { 
+
+  }
+]
+
+
+*/

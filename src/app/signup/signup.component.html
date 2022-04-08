@@ -55,7 +55,7 @@
                         <!-- <label for="confirmPassword">Confirm Password</label> -->
                         <input type="password" #confirmPassword="ngModel"
                             [class.is-invalid]="confirmPassword.invalid && confirmPassword.touched"
-                            [(ngModel)]="userModel.confirmPassword" name="confirmPassword"
+                            [(ngModel)]="localConfirmPassword" name="confirmPassword"
                             pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$"
                             class="form-control" placeholder="Confirm Password" id="confirmPassword" required>
                         <!-- <small class="text-danger" [class.d-none]="confirmPassword.valid || confirmPassword.untouched">invalid password</small> -->
@@ -75,7 +75,7 @@
                     <div class="form-action">
                         <button type="submit" (click)="onClick(password.value, confirmPassword.value)"
                             class="btn btn-primary">SignUp</button>
-                        <a class="stol" href="" routerLink="/login" routerLinkActive="active">Login</a>
+                        <a class="stol" href="" routerLink="/login">Login</a>
                     </div>
                 </form>
             </div>

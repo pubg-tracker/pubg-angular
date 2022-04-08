@@ -13,8 +13,11 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  navigateToHome() {
-    this.router.navigate(['']);
+  navigateTo(route: string) {
+    if (route === 'login') {
+      localStorage.removeItem('auth_token');
+    }
+    this.router.navigate([route]);
   }
 
 }

@@ -11,10 +11,12 @@ import { MatchesComponent } from './matches/matches.component';
 import { SignupComponent } from './signup/signup.component';
 import { TournamentsComponent } from './tournaments/tournaments.component';
 import { PlayerDetailsComponent } from './player-details/playerDetails.component'
+import { LoginSuccessComponent } from './login-success/login-success.component';
+import { UserEditComponent } from './user-edit/user-edit.component';
 
 const routes: Routes = [
   // { path: '', pathMatch: "full", component: HomeComponent },
-  { path: '', pathMatch: "full", component: LoginComponent },
+  { path: '', pathMatch: "full", component: UserEditComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'player-details', component: PlayerDetailsComponent },

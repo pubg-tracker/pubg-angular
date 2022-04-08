@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-user-edit',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-edit.component.css']
 })
 export class UserEditComponent implements OnInit {
-
+  userModel = new User("", "", "", "");
   constructor() { }
 
+  pass = this.userModel.password;
+  cpass = this.userModel.confirmPassword;
+
+  passwordmatch: any | undefined
+
+  public condcheck: boolean = true;
   ngOnInit(): void {
   }
 
+  onClick(pass: string) {
+    this.pass = pass
+  }
 }

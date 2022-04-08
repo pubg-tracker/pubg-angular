@@ -1,0 +1,39 @@
+<div class="container match__section">
+  <p class="section__title">Player details</p>
+  <section class="profile-details">
+    <section class="hero">
+      <img src="../../assets/hero.svg" alt="main player illustration" class="hero-image" />
+      <p>Id : {{ player.id }}</p>
+      <p>Player Id : {{ player.playerId }}</p>
+      <section class="bottom">
+        <button class="btn">Add To Favourite</button>
+      </section>
+    </section>
+    <div class="player-info1">
+      <p>Name : {{ player.name }}</p>
+      <p>Win Place : {{ player.winPlace }}</p>
+      <p>DBNOs : {{ player.DBNOs }}</p>
+      <p>Assists : {{ player.assists }}</p>
+      <p>Boosts : {{ player.boosts }}</p>
+      <p>Damage Dealt : {{ player.damageDealt }}</p>
+      <p>Death Type : {{ player.deathType }}</p>
+      <p>Headshot Kills : {{ player.headshotKills }}</p>
+      <p>Heals : {{ player.heals }}</p>
+      <p>Kill Streaks : {{ player.killStreaks }}</p>
+      <p>Team Kills : {{ player.teamKills }}</p>
+    </div>
+    <div class="player-info2">
+      <p>Vehicle Destroys : {{ player.vehicleDestroys }}</p>
+      <p>Swim Distance : {{ player.swimDistance }}</p>
+      <p>Walk Distance : {{ player.walkDistance }}</p>
+      <p>Ride Distance : {{ player.rideDistance }}</p>
+      <p>Weapons Acquired : {{ player.weaponsAcquired }}</p>
+      <p>Road Kills : {{ player.roadKills }}</p>
+      <p>Kill Place : {{ player.killPlace }}</p>
+      <p>Revives : {{ player.revives }}</p>
+      <p>Kills : {{ player.kills }}</p>
+      <p>Time Survived : {{ player.timeSurvived }}</p>
+      <p>Longest Kill : {{ player.longestKill }}</p>
+    </div>
+  </section>
+</div>

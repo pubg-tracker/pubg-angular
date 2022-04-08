@@ -17,6 +17,11 @@ import { MatchesComponent } from './matches/matches.component';
 import { FavouriteMatchesComponent } from './favourite-matches/favourite-matches.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { FormsModule } from '@angular/forms';
+import { LoginSuccessComponent } from './login-success/login-success.component';
+import { UserEditComponent } from './user-edit/user-edit.component';
 
 @NgModule({
   declarations: [
@@ -32,11 +37,16 @@ import { HttpClientModule } from '@angular/common/http';
     ListComponent,
     TournamentsComponent,
     MatchesComponent,
-    FavouriteMatchesComponent
+    FavouriteMatchesComponent,
+    LoginComponent,
+    SignupComponent,
+    LoginSuccessComponent,
+    UserEditComponent,
   ],
   imports: [
     BrowserModule,
     NgxPaginationModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule
   ],

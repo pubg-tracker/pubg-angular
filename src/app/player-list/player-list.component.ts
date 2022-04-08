@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-player-list',
@@ -10,9 +11,13 @@ export class PlayerListComponent implements OnInit {
   playerName: string = 'johnwick';
   playerID: string = '007';
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  navigateTo() {
+    this.router.navigate(['player-details']);
   }
 
 }

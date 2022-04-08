@@ -16,27 +16,27 @@ export class ListItemComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    if (this.parent == 'favourite-matches') {
+    if (this.parent === 'favourite-matches') {
       this.iconType = 'delete';
     }
-    else if (this.parent == 'matches') {
+    else if (this.parent === 'matches') {
       this.iconType = 'add';
     }
   }
 
   navigateTo() {
-    if (this.parent == 'tournaments') {
+    if (this.parent === 'tournaments') {
       this.router.navigate(['matches']);
     }
-    else if (this.parent == 'matches') {
+    else if (this.parent === 'matches') {
       this.router.navigate(['favourite-matches'])
     }
   }
 
   goTo() {
-    if (this.parent == 'matches') {
+    if (this.parent === 'matches' || this.parent === 'favourite-matches') {
       this.router.navigate(['match-participants']);
-    } else if (this.parent == 'tournaments') {
+    } else if (this.parent === 'tournaments') {
       this.router.navigate(['matches']);
     }
   }

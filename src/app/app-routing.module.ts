@@ -5,12 +5,19 @@ import { FavouriteMatchesComponent } from './favourite-matches/favourite-matches
 import { FavouritePlayersComponent } from './favourite-players/favourite-players.component';
 import { GlobalPlayersComponent } from './global-players/global-players.component';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 import { MatchParticipantsComponent } from './match-participants/match-participants.component';
 import { MatchesComponent } from './matches/matches.component';
+import { SignupComponent } from './signup/signup.component';
 import { TournamentsComponent } from './tournaments/tournaments.component';
+import { PlayerDetailsComponent } from './player-details/playerDetails.component'
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  // { path: '', pathMatch: "full", component: HomeComponent },
+  { path: '', pathMatch: "full", component: LoginComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'player-details', component: PlayerDetailsComponent },
   { path: 'tournaments', component: TournamentsComponent },
   { path: 'matches', component: MatchesComponent },
   { path: 'match-participants', component: MatchParticipantsComponent },

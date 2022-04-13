@@ -37,4 +37,14 @@ export class MatchService {
         })
     }
 
+    getAllParticipants(matchId: string) {
+        const matchAPI = `https://api.pubg.com/shards/tournament/matches/${matchId}`;
+        return this.http.get(matchAPI, {
+            headers: {
+                'Authorization': API_TOKEN,
+                'Accept': 'application/vnd.api+json'
+            }
+        })
+    }
+
 }

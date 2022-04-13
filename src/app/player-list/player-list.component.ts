@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatchService } from '../services/match-service.service';
 import { PostService } from '../services/post.service';
 
 @Component({
@@ -20,36 +21,38 @@ export class PlayerListComponent implements OnInit {
   playerName: string = 'johnwick';
   playerID: string = '007';
 
-  constructor(private router: Router, private postService: PostService) { }
+  @Input("id") matchId: any;
+
+  constructor(private router: Router, private matchService: MatchService) { }
 
   ngOnInit(): void {
-    this.fetchPosts();
+    this.fetchParticipants();
   }
 
-  navigateTo() {
-    this.router.navigate(['player-details']);
+  navigateTo(player: any) {
+    // console.log(player);
+    this.router.navigate(['player-details', { playerInfo: JSON.stringify(player) }]);
   }
 
-
-  fetchPosts(): void {
-    this.postService.getAllPosts()
+  fetchParticipants() {
+    this.matchService.getAllParticipants(this.matchId)
       .subscribe(
-        response => {
+        (response: any) => {
           this.loading = false;
-          this.POSTS = response.results;
-          console.log(response);
+          this.POSTS = response.included.filter((item: any) => item.type === 'participant');
+          // console.log(this.POSTS);
         });
   }
 
   onTableDataChange(event: any) {
     this.page = event;
-    this.fetchPosts();
+    this.fetchParticipants();
   }
 
   onTableSizeChange(event: any): void {
     this.tableSize = event.target.value;
     this.page = 1;
-    this.fetchPosts();
+    this.fetchParticipants();
   }
 
 }

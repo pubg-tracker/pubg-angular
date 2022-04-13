@@ -36,7 +36,7 @@ export class ListItemComponent implements OnInit {
 
   goTo() {
     if (this.parent === 'matches' || this.parent === 'favourite-matches') {
-      this.router.navigate(['match-participants']);
+      this.router.navigate(['match-participants', { matchId: this.id }]);
     } else if (this.parent === 'tournaments') {
       this.router.navigate(['matches', { tournamentId: this.id }]);
     }

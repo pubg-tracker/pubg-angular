@@ -19,11 +19,11 @@
             totalItems: count
           };
     let i = index">
-            <div class="list__item" (click)="navigateTo()">
-                <img src={{post.picture.thumbnail}} alt="playericon" class="list__img">
+            <div class="list__item" (click)="navigateTo(post)">
+                <img src="../../assets/player_icon.svg" alt="playericon" class="list__img">
                 <div class="list__detail">
-                    <p>Name: {{ post.login.username }}</p>
-                    <p>ID: {{ post.name.first+' '+post.name.last }}</p>
+                    <p>Name: {{ post.attributes.stats.name }}</p>
+                    <p>kills: {{ post.attributes.stats.kills }}</p>
                     <div class="list__action">
                         <button class="list__btn">
                             <span class="material-icons">

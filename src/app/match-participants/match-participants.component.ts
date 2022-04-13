@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-match-participants',
@@ -7,11 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MatchParticipantsComponent implements OnInit {
 
+  matchId: any;
 
-
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.matchId = this.route.snapshot.paramMap.get('matchId');
   }
 
 }

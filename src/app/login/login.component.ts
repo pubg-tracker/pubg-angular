@@ -21,8 +21,10 @@ export class LoginComponent implements OnInit {
 
   validateUser() {
     this.userService.loginUser(this.userLogin).subscribe(
-      (data: { token: string }) => {
-        this.authService.setBearerToken(data.token);
+      (data: any) => {
+        // this.authService.setBearerToken(data.token);
+        // console.log(data);
+        this.userService.getUser().next(data);
         this.router.navigate(['login-success', { message: 'Login is Successfull' }])
       }
     );

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from '../models/user';
+import { UserServiceService } from '../services/user-service.service';
 
 @Component({
   selector: 'app-home',
@@ -30,10 +32,14 @@ export class HomeComponent implements OnInit {
       route: 'favourite-matches'
     }
   ]
-
-  constructor(private router: Router) { }
+  user: User = new User('', '', '', '');
+  constructor(private router: Router, private userService: UserServiceService) { }
 
   ngOnInit(): void {
+    this.userService.getUser().subscribe((data: User) => {
+      console.log(data);
+      this.user = data;
+    })
   }
 
   onNavigate(event: any): void {

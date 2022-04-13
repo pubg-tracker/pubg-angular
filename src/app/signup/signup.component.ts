@@ -10,7 +10,7 @@ import { UserServiceService } from '../services/user-service.service';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  userModel = new User("", "", "");
+  userModel = new User("", "", "", "");
   constructor(private userService: UserServiceService, private router: Router, private authService: AuthenticationService,) { }
   localConfirmPassword: string = '';
   pass = this.userModel.password;
@@ -28,7 +28,9 @@ export class SignupComponent implements OnInit {
     if (pass === cpass) {
       this.passwordmatch = ""
       this.userService.createUser(this.userModel).subscribe((data: any) => {
-        this.authService.setBearerToken(data.token);
+        // this.authService.setBearerToken(data.token);
+        // console.log(data);
+        this.userService.getUser().next(data);
         this.router.navigate(['login-success', { message: 'Signup is Successfull' }])
       });
     }

@@ -13,7 +13,7 @@
                     <div class="form-group">
                         <!-- <label for="email">email</label> -->
                         <input type="email" #email="ngModel" [class.is-invalid]="email.invalid && email.touched"
-                            [(ngModel)]="userLogin.useremail"
+                            [(ngModel)]="userLogin.emailAddress"
                             pattern="(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)" name="email"
                             class="form-control" placeholder="Email" id="email" required>
                         <!-- <small class="text-danger" [class.d-none]="email.valid || email.untouched">correct email id is required</small> -->

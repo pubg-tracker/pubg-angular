@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { MatchService } from '../services/match-service.service';
 import { PostService } from '../services/post.service';
 
 @Component({
@@ -17,30 +19,52 @@ export class ListComponent implements OnInit {
 
   @Input() parentComp: string = '';
 
-  constructor(private postService: PostService) { }
+  constructor(private router: Router, private matchService: MatchService) { }
 
   ngOnInit(): void {
-    this.fetchPosts();
+    this.callMeBefore();
   }
 
-  fetchPosts(): void {
-    this.postService.getAllPosts()
+  // navigateTo() {
+  //   this.router.navigate(['player-details']);
+  // }
+
+  fetchFavouriteMatches() {
+    this.matchService.getAllFavouriteMatches("23451789")
       .subscribe(
-        response => {
+        (response: any) => {
           this.loading = false;
-          this.POSTS = response.results;
+          this.POSTS = response;
           console.log(response);
         });
   }
 
+  fetchTournaments() {
+
+  }
+
+  fetchMatches() {
+
+  }
+
+
   onTableDataChange(event: any) {
     this.page = event;
-    this.fetchPosts();
+    this.callMeBefore();
   }
 
   onTableSizeChange(event: any): void {
     this.tableSize = event.target.value;
     this.page = 1;
-    this.fetchPosts();
+    this.callMeBefore();
+  }
+
+  callMeBefore() {
+    if (this.parentComp === 'favourite-matches')
+      this.fetchFavouriteMatches();
+    else if (this.parentComp === 'tournaments')
+      this.fetchTournaments();
+    else
+      this.fetchMatches();
   }
 }

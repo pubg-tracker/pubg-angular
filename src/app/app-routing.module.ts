@@ -17,17 +17,17 @@ import { CanActivateRouteGuard } from './services/can-activate-route.guard';
 
 const routes: Routes = [
   { path: '', pathMatch: "full", component: LoginComponent },
-  { path: 'home', pathMatch: "full", component: HomeComponent, canActivate: [CanActivateRouteGuard] },
+  { path: 'home', pathMatch: "full", component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'login-success', component: LoginSuccessComponent, canActivate: [CanActivateRouteGuard] },
+  { path: 'login-success', component: LoginSuccessComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'player-details', component: PlayerDetailsComponent, canActivate: [CanActivateRouteGuard] },
-  { path: 'tournaments', component: TournamentsComponent, canActivate: [CanActivateRouteGuard] },
-  { path: 'matches', component: MatchesComponent, canActivate: [CanActivateRouteGuard] },
-  { path: 'match-participants', component: MatchParticipantsComponent, canActivate: [CanActivateRouteGuard] },
-  { path: 'favourite-matches', component: FavouriteMatchesComponent, canActivate: [CanActivateRouteGuard] },
-  { path: 'global-players', component: GlobalPlayersComponent, canActivate: [CanActivateRouteGuard] },
-  { path: 'favourite-players', component: FavouritePlayersComponent, canActivate: [CanActivateRouteGuard] },
+  { path: 'player-details', component: PlayerDetailsComponent },
+  { path: 'tournaments', component: TournamentsComponent },
+  { path: 'matches', component: MatchesComponent },
+  { path: 'match-participants', component: MatchParticipantsComponent },
+  { path: 'favourite-matches', component: FavouriteMatchesComponent },
+  { path: 'global-players', component: GlobalPlayersComponent },
+  { path: 'favourite-players', component: FavouritePlayersComponent },
   { path: 'not-found', component: ErrorPageComponent, data: { message: 'Page not found!' } },
   { path: '**', redirectTo: '/not-found' }
 ];
@@ -39,3 +39,23 @@ const routes: Routes = [
 export class AppRoutingModule {
 
 }
+
+
+
+
+// const routes: Routes = [
+//   { path: '', pathMatch: "full", component: LoginComponent },
+//   { path: 'home', pathMatch: "full", component: HomeComponent, canActivate: [CanActivateRouteGuard] },
+//   { path: 'login', component: LoginComponent },
+//   { path: 'login-success', component: LoginSuccessComponent, canActivate: [CanActivateRouteGuard] },
+//   { path: 'signup', component: SignupComponent },
+//   { path: 'player-details', component: PlayerDetailsComponent, canActivate: [CanActivateRouteGuard] },
+//   { path: 'tournaments', component: TournamentsComponent, canActivate: [CanActivateRouteGuard] },
+//   { path: 'matches', component: MatchesComponent, canActivate: [CanActivateRouteGuard] },
+//   { path: 'match-participants', component: MatchParticipantsComponent, canActivate: [CanActivateRouteGuard] },
+//   { path: 'favourite-matches', component: FavouriteMatchesComponent, canActivate: [CanActivateRouteGuard] },
+//   { path: 'global-players', component: GlobalPlayersComponent, canActivate: [CanActivateRouteGuard] },
+//   { path: 'favourite-players', component: FavouritePlayersComponent, canActivate: [CanActivateRouteGuard] },
+//   { path: 'not-found', component: ErrorPageComponent, data: { message: 'Page not found!' } },
+//   { path: '**', redirectTo: '/not-found' }
+// ];

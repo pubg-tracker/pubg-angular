@@ -1,0 +1,34 @@
+<div class="list">
+
+    <div class="selector">
+        <div class="select">
+            <select (change)="onTableSizeChange($event)" class="custom-select">
+                <option *ngFor="let size of tableSizes">
+                    {{ size }}
+                </option>
+            </select>
+        </div>
+    </div>
+    <div class="lists">
+        <div *ngIf="loading" class="loading">
+            <img src="../../assets/Spinner-1s-200px.svg" alt="">
+        </div>
+        <div *ngFor="let post of POSTS | paginate : {
+                itemsPerPage: tableSize,
+                currentPage: page,
+                totalItems: count
+              };
+        let i = index">
+            <app-list-item [parent]="parentComp" [id]="post.login.username" [date]="post.dob.date"></app-list-item>
+        </div>
+    </div>
+
+    <div class="footer__list">
+        <pagination-controls (responsive)="responsiveP" previousLabel="Prev" nextLabel="Next"
+            (pageChange)="onTableDataChange($event)">
+        </pagination-controls>
+    </div>
+    <!-- (pageChange)="onTableDataChange($event)" previousLabel="Prev"
+  nextLabel="Next"
+  (responsive)="responsiveP" [class.active]="i == currentIndex" [ngValue]="size"-->
+</div>

@@ -1,0 +1,13 @@
+<div class="list__items">
+    <div class="list__header" (click)="goTo()">
+        <p class="list__item">ID {{id}}</p>
+        <p class="list__item">Created at {{date}}</p>
+    </div>
+    <div class="list__action">
+        <button class="list__btn" (click)="navigateTo()">
+            <span class="material-icons">
+                {{iconType}}
+            </span>
+        </button>
+    </div>
+</div>

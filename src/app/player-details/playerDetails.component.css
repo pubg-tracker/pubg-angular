@@ -1,0 +1,45 @@
+.profile-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 1.5rem;
+  font-style: normal;
+  /* height: 50vh; */
+  margin-top: 2rem;
+  color: var(--clr-text-dark);
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* .player-info1,
+.player-info2 {
+} */
+
+.hero-image {
+  width: 300px;
+  margin: 0 auto;
+  object-fit: cover;
+  border-radius: 100%;
+  margin-bottom: 1rem;
+}
+
+.bottom {
+  display: flex;
+  justify-content: center;
+}
+
+.bottom .btn {
+  font-style: normal;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  padding: 0.4rem 1rem;
+  line-height: 24px;
+  border-radius: 50px;
+  background: var(--clr-primary);
+  border: none;
+  cursor: pointer;
+}

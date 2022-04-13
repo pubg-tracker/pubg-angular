@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { User } from '../models/user';
 import { MatchService } from '../services/match-service.service';
-import { PostService } from '../services/post.service';
+import { UserServiceService } from '../services/user-service.service';
 
 @Component({
   selector: 'app-list',
@@ -20,10 +21,16 @@ export class ListComponent implements OnInit {
   @Input() parentComp: string = '';
   @Input() id: string = '';
 
-  constructor(private router: Router, private matchService: MatchService) { }
+  user: User = new User('', '', '', '');
+  constructor(private router: Router, private matchService: MatchService, private userService: UserServiceService, private activeRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.callMeBefore();
+    this.userService.getUser().subscribe((data: User) => {
+      // console.log(data);
+      this.user = data;
+      // console.log(this.user.userId);
+      this.callMeBefore();
+    })
   }
 
   // navigateTo() {
@@ -31,12 +38,12 @@ export class ListComponent implements OnInit {
   // }
 
   fetchFavouriteMatches() {
-    this.matchService.getAllFavouriteMatches("23451789")
+    this.matchService.getAllFavouriteMatches(this.user.userId)
       .subscribe(
         (response: any) => {
           this.loading = false;
           this.POSTS = response;
-          console.log(response);
+          // console.log(response);
         });
   }
 

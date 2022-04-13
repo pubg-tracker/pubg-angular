@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 // const endpoint = 'https://jsonplaceholder.typicode.com/posts';
 const endpoint = 'http://localhost:8080';
@@ -13,7 +13,13 @@ const API_TOKEN = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJlMGQ5M
 
 export class MatchService {
 
+    public favMatches = new BehaviorSubject<any>([]);
+
     constructor(private http: HttpClient) { }
+
+    getFavMatchesSubject() {
+        return this.favMatches;
+    }
 
     getAllFavouriteMatches(userId: string): Observable<any> {
         return this.http.get(`${endpoint}/favMatch/${userId}`);
@@ -45,6 +51,14 @@ export class MatchService {
                 'Accept': 'application/vnd.api+json'
             }
         })
+    }
+
+    addToFav(match: any) {
+        return this.http.post(`${endpoint}/addFav`, match, { responseType: 'text' });
+    }
+
+    deleteFromFav(userId: string) {
+        return this.http.delete(`${endpoint}/deleteFav/${userId}`, { responseType: 'text' });
     }
 
 }

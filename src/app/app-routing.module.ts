@@ -10,7 +10,7 @@ import { MatchParticipantsComponent } from './match-participants/match-participa
 import { MatchesComponent } from './matches/matches.component';
 import { SignupComponent } from './signup/signup.component';
 import { TournamentsComponent } from './tournaments/tournaments.component';
-import { PlayerDetailsComponent } from './player-details/playerDetails.component';
+import { PlayerDetailsComponent } from './player-details/playerDetails.component'
 import { LoginSuccessComponent } from './login-success/login-success.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { CanActivateRouteGuard } from './services/can-activate-route.guard';
@@ -28,7 +28,6 @@ const routes: Routes = [
   { path: 'favourite-matches', component: FavouriteMatchesComponent, canActivate: [CanActivateRouteGuard] },
   { path: 'global-players', component: GlobalPlayersComponent, canActivate: [CanActivateRouteGuard] },
   { path: 'favourite-players', component: FavouritePlayersComponent, canActivate: [CanActivateRouteGuard] },
-  { path: 'user-edit', component: UserEditComponent, canActivate: [CanActivateRouteGuard] },
   { path: 'not-found', component: ErrorPageComponent, data: { message: 'Page not found!' } },
   { path: '**', redirectTo: '/not-found' }
 ];

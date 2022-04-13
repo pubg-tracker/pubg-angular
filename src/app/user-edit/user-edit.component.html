@@ -1,75 +1,68 @@
 <div class="container flexx">
-  <div class="profile">
     <div class="login-img">
-        <img class="imgg" src="../../assets/user_profile.svg" alt="" />
+        <img class="imgg" src="../../assets/user_profile.svg" alt="">
     </div>
-    <div class="upload-btn-wrapper">
-      <button class="btn btn-secondary">Change Profile</button>
-      <input type="file" name="img" accept="image/*" />
-    </div>
-  </div>
+    <div class="formdiv">
+        <div class="login-card">
+            <div class="login-body">
+                <div class="login-title">
+                    <h3>Profile</h3>
+                </div>
 
-  <div class="formdiv">
-    <div class="login-card">
-        <div class="login-body">
-            <div class="login-title">
-                <h3>Profile</h3>
+                <form class="card-text" #userForm="ngForm" action="#" method="#" autocomplete="on">
+                    <div class="form-group">
+                        <!-- <label for="username">Username</label> -->
+                        <input type="text" #name="ngModel" [class.is-invalid]="name.invalid && name.touched"
+                            [(ngModel)]="userModel.username" name="username" class="form-control" placeholder="Username"
+                            id="username" required minlength="3">
+
+                        <!-- <small class="text-danger" [class.d-none]="name.valid || name.untouched">min length of name is required</small> -->
+                        <div *ngIf="name.errors && (name.invalid && name.touched)">
+                            <small class="text-danger" *ngIf="name.errors?.['required']">Name is required</small>
+                            <small class="text-danger" *ngIf="name.errors?.['minlength']">Invalid name( Must be 3 chars
+                                minimum)</small>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <!-- <label for="email">email</label> -->
+                        <input type="email" #email="ngModel" [class.is-invalid]="email.invalid && email.touched"
+                            [(ngModel)]="userModel.email" pattern="(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
+                            name="email" class="form-control" placeholder="Email" id="email" required>
+                        <!-- <small class="text-danger" [class.d-none]="email.valid || email.untouched">correct email id is required</small> -->
+                        <div *ngIf="email.errors && (email.invalid && email.touched)">
+                            <small class="text-danger" *ngIf="email.errors?.['required']">email is required </small>
+                            <small class="text-danger" *ngIf="email.errors?.['pattern']">Invalid email id</small>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <!-- <label for="password">Password</label> -->
+                        <input type="password" #password="ngModel" [(ngModel)]="userModel.password"
+                            pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$"
+                            [class.is-invalid]="password.invalid && password.touched" name="password"
+                            class="form-control" placeholder="Password" id="password" required>
+                        <!-- <small class="text-danger" [class.d-none]="password.valid || password.untouched">invalid password</small> -->
+                        <div *ngIf="password.errors && (password.invalid && password.touched)">
+                            <small class="text-danger" *ngIf="password.errors?.['required']">Password is
+                                required</small>
+                            <small class="text-danger" *ngIf="password.errors?.['pattern']">Password must be minimum
+                                eight characters, at least one upper case English letter, one lower case English letter,
+                                one number and one special character</small>
+                        </div>
+                    </div>
+
+
+                    <div class="error_display">
+                        <small class="text-danger">{{passwordmatch}}</small>
+                    </div>
+
+                    <div class="form-action">
+                        <button type="submit" (click)="onClick(password.value)" class="btn btn-primary">Update</button>
+                        <!-- <a class="stol" href="" routerLink="/login" routerLinkActive="active">Login</a> -->
+                    </div>
+                </form>
             </div>
-
-            <form class="card-text" #userForm="ngForm" action="#" method="#" autocomplete="on">
-                <div class="form-group">
-                    <!-- <label for="username">Username</label> -->
-                    <input type="text" #name="ngModel" [class.is-invalid]="name.invalid && name.touched"
-                        [(ngModel)]="userModel.username" name="username" class="form-control" placeholder="Username"
-                        id="username" required minlength="3">
-
-                    <!-- <small class="text-danger" [class.d-none]="name.valid || name.untouched">min length of name is required</small> -->
-                    <div *ngIf="name.errors && (name.invalid && name.touched)">
-                        <small class="text-danger" *ngIf="name.errors?.['required']">Name is required</small>
-                        <small class="text-danger" *ngIf="name.errors?.['minlength']">Invalid name( Must be 3 chars
-                            minimum)</small>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <!-- <label for="email">email</label> -->
-                    <input type="email" #email="ngModel" [class.is-invalid]="email.invalid && email.touched"
-                        [(ngModel)]="userModel.email" pattern="(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
-                        name="email" class="form-control" placeholder="Email" id="email" required>
-                    <!-- <small class="text-danger" [class.d-none]="email.valid || email.untouched">correct email id is required</small> -->
-                    <div *ngIf="email.errors && (email.invalid && email.touched)">
-                        <small class="text-danger" *ngIf="email.errors?.['required']">email is required </small>
-                        <small class="text-danger" *ngIf="email.errors?.['pattern']">Invalid email id</small>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <!-- <label for="password">Password</label> -->
-                    <input type="password" #password="ngModel" [(ngModel)]="userModel.password"
-                        pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$"
-                        [class.is-invalid]="password.invalid && password.touched" name="password"
-                        class="form-control" placeholder="Password" id="password" required>
-                    <!-- <small class="text-danger" [class.d-none]="password.valid || password.untouched">invalid password</small> -->
-                    <div *ngIf="password.errors && (password.invalid && password.touched)">
-                        <small class="text-danger" *ngIf="password.errors?.['required']">Password is
-                            required</small>
-                        <small class="text-danger" *ngIf="password.errors?.['pattern']">Password must be minimum
-                            eight characters, at least one upper case English letter, one lower case English letter,
-                            one number and one special character</small>
-                    </div>
-                </div>
-
-
-                <div class="error_display">
-                    <small class="text-danger">{{passwordmatch}}</small>
-                </div>
-
-                <div class="form-action">
-                    <button type="submit" (click)="onClick(password.value)" class="btn btn-primary">Update</button>
-                    <!-- <a class="stol" href="" routerLink="/login" routerLinkActive="active">Login</a> -->
-                </div>
-            </form>
         </div>
     </div>
-</div>
 </div>

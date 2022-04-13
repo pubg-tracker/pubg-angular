@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FavouritePlayersComponent implements OnInit {
 
+  parentName: string = 'favourite-players';
+
   constructor() { }
 
   ngOnInit(): void {

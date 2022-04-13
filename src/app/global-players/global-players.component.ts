@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./global-players.component.css']
 })
 export class GlobalPlayersComponent implements OnInit {
-
+  parentName: string = 'global-players';
   constructor() { }
 
   ngOnInit(): void {

@@ -9,11 +9,12 @@ import { ActivatedRoute } from '@angular/router';
 export class MatchParticipantsComponent implements OnInit {
 
   matchId: any;
-
+  parentName: any;
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.matchId = this.route.snapshot.paramMap.get('matchId');
+    this.parentName = this.route.snapshot.paramMap.get('parent');
   }
 
 }

@@ -26,7 +26,8 @@ export class ListItemComponent implements OnInit {
 
   navigateTo() {
     if (this.parent === 'tournaments') {
-      this.router.navigate(['matches']);
+      console.log(this.id);
+      this.router.navigate(['matches', { tournamentId: this.id }]);
     }
     else if (this.parent === 'matches') {
       this.router.navigate(['favourite-matches'])
@@ -37,7 +38,7 @@ export class ListItemComponent implements OnInit {
     if (this.parent === 'matches' || this.parent === 'favourite-matches') {
       this.router.navigate(['match-participants']);
     } else if (this.parent === 'tournaments') {
-      this.router.navigate(['matches']);
+      this.router.navigate(['matches', { tournamentId: this.id }]);
     }
   }
 

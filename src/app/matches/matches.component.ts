@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-matches',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MatchesComponent implements OnInit {
   parentName: string = 'matches';
-  constructor() { }
+  tournamentId: any;
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.tournamentId = this.route.snapshot.paramMap.get('tournamentId');
   }
 
 }

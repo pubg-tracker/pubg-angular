@@ -19,7 +19,12 @@
                 totalItems: count
               };
         let i = index">
-            <app-list-item [parent]="parentComp" [id]="post.matchId" [date]="post.createdAt"></app-list-item>
+            <app-list-item *ngIf="parentComp === 'favourite-matches'" [parent]="parentComp" [id]="post.matchId"
+                [date]="post.createdAt"></app-list-item>
+            <app-list-item *ngIf="parentComp === 'tournaments'" [parent]="parentComp" [id]="post.id"
+                [date]="post.attributes.createdAt"></app-list-item>
+            <app-list-item *ngIf="parentComp === 'matches'" [parent]="parentComp" [id]="post.id"
+                [date]="post.attributes.createdAt"></app-list-item>
         </div>
     </div>
 

@@ -18,6 +18,7 @@ export class ListComponent implements OnInit {
   loading: boolean = true;
 
   @Input() parentComp: string = '';
+  @Input() id: string = '';
 
   constructor(private router: Router, private matchService: MatchService) { }
 
@@ -40,11 +41,21 @@ export class ListComponent implements OnInit {
   }
 
   fetchTournaments() {
-
+    this.matchService.getAllTournaments()
+      .subscribe(
+        (response: any) => {
+          this.loading = false;
+          this.POSTS = response.data;
+          // console.log(response);
+        });
   }
 
   fetchMatches() {
-
+    this.matchService.getAllMatchesInTournament(this.id).subscribe((response: any) => {
+      this.loading = false;
+      this.POSTS = response.included;
+      // console.log(this.POSTS);
+    });
   }
 
 

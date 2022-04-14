@@ -32,6 +32,10 @@
   justify-content: center;
 }
 
+.status {
+  margin-top: 1rem;
+}
+
 .bottom .btn {
   font-style: normal;
   font-weight: 500;

@@ -9,7 +9,7 @@
             </select>
         </div>
     </div>
-    <div *ngIf="parent==='matches'" class="player__list lists">
+    <div *ngIf="parent==='matches' || parent==='favourite-matches'" class="player__list lists">
         <div *ngIf="loading" class="loading">
             <img src="../../assets/Spinner-1s-200px.svg" alt="">
         </div>
@@ -19,13 +19,14 @@
             totalItems: count
           };
     let i = index">
-            <div class="list__item" (click)="navigateTo(post)">
-                <img src="../../assets/player_icon.svg" alt="playericon" class="list__img">
+            <div class="list__item">
+                <img (click)="navigateTo(post)" src="../../assets/player_icon.svg" alt="playericon" class="list__img">
                 <div class="list__detail">
                     <p>Name: {{ post.attributes.stats.name }}</p>
                     <p>kills: {{ post.attributes.stats.kills }}</p>
                     <div class="list__action">
-                        <button class="list__btn">
+                        <button class="list__btn"
+                            (click)="doAction(post.id,post.attributes.stats.name,post.attributes.stats.kills)">
                             <span class="material-icons">
                                 {{iconType}}
                             </span>
@@ -45,8 +46,8 @@
             totalItems: count
           };
     let i = index">
-            <div class="list__item" (click)="navigateTo(post)">
-                <img src="../../assets/player_icon.svg" alt="playericon" class="list__img">
+            <div class="list__item">
+                <img (click)="navigateTo(post)" src="../../assets/player_icon.svg" alt="playericon" class="list__img">
                 <div class="list__detail">
                     <p>Name: {{ post.name }}</p>
                     <p>kills: {{ post.kills }}</p>

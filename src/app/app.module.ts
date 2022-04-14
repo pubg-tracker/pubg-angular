@@ -24,6 +24,8 @@ import { LoginSuccessComponent } from './login-success/login-success.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { CanActivateRouteGuard } from './services/can-activate-route.guard';
 import { GlobalErrorHandlerService } from './services/global-error-handler.service';
+import { CommonModule } from '@angular/common';
+import { PlayerDetailsComponent } from './player-details/playerDetails.component';
 
 @NgModule({
   declarations: [
@@ -44,9 +46,11 @@ import { GlobalErrorHandlerService } from './services/global-error-handler.servi
     SignupComponent,
     LoginSuccessComponent,
     UserEditComponent,
+    PlayerDetailsComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     NgxPaginationModule,
     FormsModule,
     AppRoutingModule,

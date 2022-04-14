@@ -38,7 +38,7 @@ export class PlayerListComponent implements OnInit {
       this.user = data;
       console.log(this.user.userId);
     })
-    if (this.parent === 'matches') {
+    if (this.parent === 'matches' || this.parent === 'favourite-matches') {
       this.iconType = 'add';
       this.fetchParticipants();
     }
@@ -55,7 +55,7 @@ export class PlayerListComponent implements OnInit {
   navigateTo(player: any) {
     // console.log(player);
     console.log(this.user.userId);
-    this.router.navigate(['player-details', { playerInfo: JSON.stringify(player), userId: this.user.userId, parentName: this.parent }]);
+    this.router.navigate(['player-details', { playerInfo: JSON.stringify(player), userId: this.user.userId, parentName: this.parent, matchId: this.matchId }]);
   }
 
   fetchParticipants() {
@@ -96,14 +96,14 @@ export class PlayerListComponent implements OnInit {
   deleteFavPlayer(playerId: string) {
     this.playerService.deleteFavPlayer(playerId).subscribe((response: any) => {
       console.log(response);
+      // console.log('hello im in delete')
       this.fetchFavPlayers();
     })
   }
 
   doAction(playerId: string, name: string, kills: string) {
-    if (this.parent === 'global-players' || this.parent === 'matches') {
+    if (this.parent === 'global-players' || this.parent === 'matches' || this.parent === 'favourite-matches') {
       this.addFavPlayer(playerId, name, kills);
-      console.log()
     } else {
       this.deleteFavPlayer(playerId);
     }
@@ -111,6 +111,7 @@ export class PlayerListComponent implements OnInit {
 
   fetchFavPlayers() {
     this.playerService.getFavPlayer(this.user.userId).subscribe((response: any) => {
+      console.log('helo')
       this.loading = false;
       this.POSTS = response;
       // console.log(this.POSTS, this.user.userId);

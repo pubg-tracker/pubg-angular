@@ -19,21 +19,35 @@ export class PlayerDetailsComponent implements OnInit {
   parent: any;
   playerr: any;
   playerId: string = '';
+  buttonText: string = '';
+  successMsg: boolean = false;
   ngOnInit(): void {
     // console.log(this.route.snapshot.paramMap);
+
     this.data = this.route.snapshot.paramMap.get('playerInfo');
     this.userId = this.route.snapshot.paramMap.get('userId');
     console.log(this.userId);
     this.parent = this.route.snapshot.paramMap.get('parentName');
+
+
+    if (this.parent === 'favourite-players')
+      this.buttonText = 'Remove from Favourite'
+    else
+      this.buttonText = 'Add To Favourite';
+
     if (this.parent === 'matches') {
-      let obj = JSON.parse(this.data);
+      this.playerr = JSON.parse(this.data);
       // console.log(data);
-      this.callMe(obj);
+      this.callMe(this.playerr);
     }
     else {
       let play = JSON.parse(this.data);
       this.playerId = play.id;
-      this.matchId = play.matchId;
+      console.log(play);
+      if (this.parent === 'global-players' || this.parent === 'favourite-players')
+        this.matchId = play.matchId;
+      else
+        this.matchId = this.route.snapshot.paramMap.get('matchId');
       this.fetchParticipants();
     }
   }
@@ -73,21 +87,34 @@ export class PlayerDetailsComponent implements OnInit {
       .subscribe(
         (response: any) => {
           this.playerr = response.included.filter((item: any) => item.type === 'participant' && item.id === this.playerId);
-          console.log(this.playerr[0]);
+          // console.log(this.playerr[0]);
           this.callMe(this.playerr[0]);
           // console.log(this.POSTS);
         });
   }
 
   navigateTo() {
-    this.addFavPlayer();
-    this.router.navigate(['favourite-players'])
+    if (this.parent === 'favourite-players')
+      this.deleteFavPlayer();
+    else
+      this.addFavPlayer();
+    // this.router.navigate(['favourite-players'])
   }
 
   addFavPlayer() {
-    let obj = JSON.parse(this.data);
-    this.playerService.addFavPlayer(new Player(obj.id, obj.attributes.stats.name, obj.attributes.stats.kills, this.matchId, this.userId)).subscribe((response: any) => {
+    // let obj = JSON.parse(this.data);
+    console.log('player ', this.player)
+    this.playerService.addFavPlayer(new Player(this.player.id, this.player.name, this.player.kills, this.matchId, this.userId)).subscribe((response: any) => {
       console.log(response);
+      this.successMsg = true;
     });
+  }
+
+
+  deleteFavPlayer() {
+    this.playerService.deleteFavPlayer(this.player.id).subscribe((response: any) => {
+      console.log(response);
+      this.successMsg = true;
+    })
   }
 }

@@ -6,8 +6,9 @@
       <p>Id : {{ player.id }}</p>
       <p>Player Id : {{ player.playerId }}</p>
       <section class="bottom">
-        <button (click)="navigateTo()" class="btn">Add To Favourite</button>
+        <button (click)="navigateTo()" class="btn">{{buttonText}}</button>
       </section>
+      <div *ngIf="successMsg==true" class="status">Done !!!</div>
     </section>
     <div class="player-info1">
       <p>Name : {{ player.name }}</p>

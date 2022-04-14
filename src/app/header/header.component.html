@@ -1,10 +1,10 @@
 <div class="container">
-    <div class="navbar">
-        <p class="navbar__title">Pubg Tracker</p>
-        <div class="navbar__items">
-            <p (click)="navigateTo('home')">Home</p>
-            <p (click)="navigateTo('login')">Logout</p>
-            <p class="img-circular"></p>
-        </div>
+  <div class="navbar">
+    <p class="navbar__title">Pubg Tracker</p>
+    <div *ngIf="loggedIn" class="navbar__items">
+      <p (click)="navigateTo('home')">Home</p>
+      <p (click)="navigateTo('login')">Logout</p>
+      <p class="img-circular"></p>
     </div>
+  </div>
 </div>

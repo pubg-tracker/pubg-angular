@@ -69,13 +69,13 @@ export class ListComponent implements OnInit {
 
   onTableDataChange(event: any) {
     this.page = event;
-    this.callMeBefore();
+    // this.callMeBefore();
   }
 
   onTableSizeChange(event: any): void {
     this.tableSize = event.target.value;
     this.page = 1;
-    this.callMeBefore();
+    // this.callMeBefore();
   }
 
   callMeBefore() {

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Player } from '../models/playerDetails';
+import { Player } from '../models/player';
+import { MatchService } from '../services/match-service.service';
+import { PlayerService } from '../services/player-service.service';
 
 @Component({
   selector: 'player-details',
@@ -10,42 +12,34 @@ import { Player } from '../models/playerDetails';
 export class PlayerDetailsComponent implements OnInit {
   player: any = {};
 
-  // id: "6ea3546e-c548-4332-8064-b38035f1e1cd",
-
-  // "status": 
-
-  // 				"DBNOs": 2,
-  // 				"assists": 0,
-  // 				"boosts": 5,
-  // 				"damageDealt": 505.0444,
-  // 				"deathType": "byplayer",
-  // 				"headshotKills": 1,
-  // 				"heals": 6,
-  // 				"killPlace": 9,
-  // 				"killStreaks": 2,
-  // 				"kills": 3,
-  // 				"longestKill": 111.711914,
-  // 				"name": "EXN_Salik",
-  // 				"playerId": "account.da99015a66314410ad083e069b9774e7"
-  // 				"revives": 0,
-  // 				"rideDistance": 4928.9043,
-  // 				"roadKills": 0,
-  // 				"swimDistance": 0,
-  // 				"teamKills": 0,
-  // 				"timeSurvived": 1179,
-  // 				"vehicleDestroys": 0
-  // 				"walkDistance": 1219.8293
-  // 				"weaponsAcquired": 6
-  // 				"winPlace": 10
-
-
-  constructor(private router: Router, private route: ActivatedRoute) { }
-
+  constructor(private router: Router, private route: ActivatedRoute, private playerService: PlayerService, private matchService: MatchService) { }
+  userId: any;
+  matchId: any;
+  data: any;
+  parent: any;
+  playerr: any;
+  playerId: string = '';
   ngOnInit(): void {
-    console.log(this.route.snapshot.paramMap);
-    let data: any = this.route.snapshot.paramMap.get('playerInfo');
-    let obj = JSON.parse(data);
-    console.log(data);
+    // console.log(this.route.snapshot.paramMap);
+    this.data = this.route.snapshot.paramMap.get('playerInfo');
+    this.userId = this.route.snapshot.paramMap.get('userId');
+    console.log(this.userId);
+    this.parent = this.route.snapshot.paramMap.get('parentName');
+    if (this.parent === 'matches') {
+      let obj = JSON.parse(this.data);
+      // console.log(data);
+      this.callMe(obj);
+    }
+    else {
+      let play = JSON.parse(this.data);
+      this.playerId = play.id;
+      this.matchId = play.matchId;
+      this.fetchParticipants();
+    }
+  }
+
+  callMe(obj: any) {
+    console.log(obj);
     this.player = {
       id: obj.id,
       DBNOs: obj.attributes.stats.DBNOs,
@@ -74,7 +68,26 @@ export class PlayerDetailsComponent implements OnInit {
     };
   }
 
+  fetchParticipants() {
+    this.matchService.getAllParticipants(this.matchId)
+      .subscribe(
+        (response: any) => {
+          this.playerr = response.included.filter((item: any) => item.type === 'participant' && item.id === this.playerId);
+          console.log(this.playerr[0]);
+          this.callMe(this.playerr[0]);
+          // console.log(this.POSTS);
+        });
+  }
+
   navigateTo() {
+    this.addFavPlayer();
     this.router.navigate(['favourite-players'])
+  }
+
+  addFavPlayer() {
+    let obj = JSON.parse(this.data);
+    this.playerService.addFavPlayer(new Player(obj.id, obj.attributes.stats.name, obj.attributes.stats.kills, this.matchId, this.userId)).subscribe((response: any) => {
+      console.log(response);
+    });
   }
 }

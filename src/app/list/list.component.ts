@@ -28,6 +28,7 @@ export class ListComponent implements OnInit {
     this.userService.getUser().subscribe((data: User) => {
       // console.log(data);
       this.user = data;
+      console.log(this.user.userId);
       // console.log(this.user.userId);
       this.callMeBefore();
     })

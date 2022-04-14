@@ -9,7 +9,7 @@
             </select>
         </div>
     </div>
-    <div *ngIf="parent==='match-participants'" class="player__list lists">
+    <div *ngIf="parent==='matches'" class="player__list lists">
         <div *ngIf="loading" class="loading">
             <img src="../../assets/Spinner-1s-200px.svg" alt="">
         </div>
@@ -35,7 +35,7 @@
             </div>
         </div>
     </div>
-    <div *ngIf="parent==='global-players'" class="player__list lists">
+    <div *ngIf="parent==='global-players' || parent==='favourite-players'" class="player__list lists">
         <div *ngIf="loading" class="loading">
             <img src="../../assets/Spinner-1s-200px.svg" alt="">
         </div>

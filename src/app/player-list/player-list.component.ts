@@ -36,10 +36,9 @@ export class PlayerListComponent implements OnInit {
     this.userService.getUser().subscribe((data: User) => {
       // console.log(data);
       this.user = data;
+      console.log(this.user.userId);
     })
-    if (this.parent === 'favourite-matches') {
-      this.iconType = 'delete';
-    } else if (this.parent === 'match-participants') {
+    if (this.parent === 'matches') {
       this.iconType = 'add';
       this.fetchParticipants();
     }
@@ -55,7 +54,8 @@ export class PlayerListComponent implements OnInit {
 
   navigateTo(player: any) {
     // console.log(player);
-    this.router.navigate(['player-details', { playerInfo: JSON.stringify(player) }]);
+    console.log(this.user.userId);
+    this.router.navigate(['player-details', { playerInfo: JSON.stringify(player), userId: this.user.userId, parentName: this.parent }]);
   }
 
   fetchParticipants() {
@@ -89,18 +89,21 @@ export class PlayerListComponent implements OnInit {
   addFavPlayer(playerId: string, name: string, kills: string) {
     this.playerService.addFavPlayer(new Player(playerId, name, kills, this.matchId, this.user.userId)).subscribe((response: any) => {
       console.log(response);
+      this.router.navigate(['favourite-players']);
     });
   }
 
   deleteFavPlayer(playerId: string) {
     this.playerService.deleteFavPlayer(playerId).subscribe((response: any) => {
       console.log(response);
+      this.fetchFavPlayers();
     })
   }
 
   doAction(playerId: string, name: string, kills: string) {
-    if (this.parent === 'global-players' || this.parent === 'match-participants') {
+    if (this.parent === 'global-players' || this.parent === 'matches') {
       this.addFavPlayer(playerId, name, kills);
+      console.log()
     } else {
       this.deleteFavPlayer(playerId);
     }
@@ -110,6 +113,7 @@ export class PlayerListComponent implements OnInit {
     this.playerService.getFavPlayer(this.user.userId).subscribe((response: any) => {
       this.loading = false;
       this.POSTS = response;
+      // console.log(this.POSTS, this.user.userId);
     })
   }
 

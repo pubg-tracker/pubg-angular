@@ -63,7 +63,7 @@ export class ListItemComponent implements OnInit {
     else if (this.parent === 'favourite-matches') {
       this.router.navigate(['match-participants', { matchId: this.id, parent: "favourite-matches" }]);
     } else if (this.parent === 'tournaments') {
-      this.router.navigate(['matches', { tournamentId: this.id }]);
+      this.router.navigate(['matches', { tournamentId: this.id, parent: 'tournaments' }]);
     }
   }
 

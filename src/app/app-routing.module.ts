@@ -28,6 +28,7 @@ const routes: Routes = [
   { path: 'favourite-matches', component: FavouriteMatchesComponent },
   { path: 'global-players', component: GlobalPlayersComponent },
   { path: 'favourite-players', component: FavouritePlayersComponent },
+  { path: 'user-edit', component: UserEditComponent },
   { path: 'not-found', component: ErrorPageComponent, data: { message: 'Page not found!' } },
   { path: '**', redirectTo: '/not-found' }
 ];

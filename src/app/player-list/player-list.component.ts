@@ -28,7 +28,7 @@ export class PlayerListComponent implements OnInit {
 
   @Input() parent: string = '';
   @Input("id") matchId: any;
-  user: User = new User('', '', '', '');
+  user: User = new User('', '', '', '', '');
   constructor(private router: Router, private userService: UserServiceService, private matchService: MatchService, private playerService: PlayerService) { }
 
   ngOnInit(): void {

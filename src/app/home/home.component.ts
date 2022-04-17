@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
       route: 'favourite-matches'
     }
   ]
-  user: User = new User('', '', '', '');
+  user: User = new User('', '', '', '', '');
   constructor(private router: Router, private userService: UserServiceService) { }
 
   ngOnInit(): void {
@@ -40,6 +40,7 @@ export class HomeComponent implements OnInit {
       // console.log(data);
       this.user = data;
     })
+    this.userService.getHeader().next(true);
   }
 
   onNavigate(event: any): void {

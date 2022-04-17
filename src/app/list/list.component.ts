@@ -21,7 +21,7 @@ export class ListComponent implements OnInit {
   @Input() parentComp: string = '';
   @Input() id: string = '';
 
-  user: User = new User('', '', '', '');
+  user: User = new User('', '', '', '', '');
   constructor(private router: Router, private matchService: MatchService, private userService: UserServiceService, private activeRoute: ActivatedRoute) { }
 
   ngOnInit(): void {

@@ -18,7 +18,7 @@ export class ListItemComponent implements OnInit {
 
   iconType: string = 'open_in_new';
 
-  user: User = new User('', '', '', '');
+  user: User = new User('', '', '', '', '');
   constructor(private router: Router, private userService: UserServiceService, private matchService: MatchService) { }
 
   ngOnInit(): void {

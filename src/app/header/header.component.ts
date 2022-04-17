@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserServiceService } from '../services/user-service.service';
 
 @Component({
   selector: 'app-header',
@@ -8,16 +9,25 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private router: Router) { }
-
+  showItem: boolean = false;
+  constructor(private router: Router, private userService: UserServiceService) { }
+  user: any;
   ngOnInit(): void {
+    this.userService.getHeader().subscribe((data: any) => {
+      this.showItem = data;
+    })
+    this.userService.getUser().subscribe((data: any) => {
+      this.user = data;
+    })
   }
 
   navigateTo(route: string) {
     if (route === 'login') {
       localStorage.removeItem('auth_token');
+      this.userService.getHeader().next(false);
     }
-    this.router.navigate([route]);
+    console.log(this.user);
+    this.router.navigate([route, { user: JSON.stringify(this.user) }]);
   }
 
 }

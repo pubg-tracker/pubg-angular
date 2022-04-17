@@ -10,7 +10,7 @@ import { UserServiceService } from '../services/user-service.service';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  userModel = new User("", "", "", "");
+  userModel = new User("", "", "", "", "");
   constructor(private userService: UserServiceService, private router: Router, private authService: AuthenticationService,) { }
   localConfirmPassword: string = '';
   pass = this.userModel.password;

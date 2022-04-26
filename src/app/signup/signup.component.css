@@ -29,6 +29,10 @@
     width: 40%;
 }
 
+.login-title {
+    margin-bottom: 5rem;
+}
+
 .imgg {
     width: 80%;
     object-fit: cover;

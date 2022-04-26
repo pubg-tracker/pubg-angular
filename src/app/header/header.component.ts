@@ -25,9 +25,14 @@ export class HeaderComponent implements OnInit {
     if (route === 'login') {
       localStorage.removeItem('auth_token');
       this.userService.getHeader().next(false);
+      this.router.navigate([route]);
+    } else if (route === 'home') {
+      // console.log(this.user);
+      this.router.navigate([route]);
+    } else {
+      // this.router.navigate([route, { user: JSON.stringify(this.user) }]);
+      this.router.navigate([route]);
     }
-    console.log(this.user);
-    this.router.navigate([route, { user: JSON.stringify(this.user) }]);
   }
 
 }

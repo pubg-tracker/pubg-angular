@@ -68,6 +68,9 @@
                         <button type="submit" (click)="onClick(password.value)" class="btn btn-primary">Update</button>
                         <!-- <a class="stol" href="" routerLink="/login" routerLinkActive="active">Login</a> -->
                     </div>
+
+                    <div *ngIf="successMsg==true" class="status">Done !!!</div>
+
                 </form>
             </div>
         </div>

@@ -24,15 +24,33 @@ export class UserEditComponent implements OnInit {
   ngOnInit(): void {
     // this.userModel.userId = this.userId;
     // console.log(this.route.snapshot.paramMap.get('user'));
-    this.userModel = this.route.snapshot.paramMap.get('user');
-    this.userModel = JSON.parse(this.userModel);
-    // console.log(this.userModel.userId);
-    this.imageSrc = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' + this.userModel.data);
+    this.userService.getUser().subscribe((data: User) => {
+      // console.log(data);
+      this.userModel = data;
+      console.log(this.userModel);
+      // this.userModel = JSON.parse(this.userModel);
+      // console.log(this.userModel.userId);
+      this.imageSrc = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' + this.userModel.data);
+    })
+    // this.userModel = this.route.snapshot.paramMap.get('user');
   }
   base64String: any;
+  successMsg: boolean = false;
   // reader = new FileReader();
-  onClick(pass: string) {
+  async onClick(pass: string) {
     // this.pass = pass
+    // console.log("hello", pass);
+    if (!this.file) {
+      this.file = [{}]
+      let base64Response = await fetch(`data:image/jpeg;base64,${this.userModel.data}`);
+      const blob = await base64Response.blob();
+      this.file[0] = new File([blob], "image.jpg", { type: "image/jpeg" });
+    }
+    // console.log('hello', this.userModel);
+    // console.log('hi', this.file[0])
+
+    // console.log(this.file[0])
+    // let isFileThere = 'true';
     this.userService.updateUser(this.userModel, this.file[0]).subscribe((result: any) => {
       // console.log(result);
 
@@ -51,6 +69,7 @@ export class UserEditComponent implements OnInit {
       //   this.base64String = reader.result as string;
       //   this.imageSrc = this.base64String;
       this.imageSrc = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' + this.base64String);
+      this.successMsg = true;
       // };
       // reader.readAsDataURL(blob);
       // reader.onloadend = function () {

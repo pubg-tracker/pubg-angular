@@ -21,6 +21,7 @@ export class PlayerDetailsComponent implements OnInit {
   playerId: string = '';
   buttonText: string = '';
   successMsg: boolean = false;
+  loading: boolean = true;
   ngOnInit(): void {
     // console.log(this.route.snapshot.paramMap);
 
@@ -39,8 +40,7 @@ export class PlayerDetailsComponent implements OnInit {
       this.playerr = JSON.parse(this.data);
       // console.log(data);
       this.callMe(this.playerr);
-    }
-    else {
+    } else {
       let play = JSON.parse(this.data);
       this.playerId = play.id;
       console.log(play);
@@ -80,6 +80,7 @@ export class PlayerDetailsComponent implements OnInit {
       weaponsAcquired: obj.attributes.stats.weaponsAcquired,
       winPlace: obj.attributes.stats.winPlace,
     };
+    this.loading = false;
   }
 
   fetchParticipants() {

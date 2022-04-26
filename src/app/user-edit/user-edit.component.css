@@ -55,10 +55,16 @@
 }
 
 .flexx {
+    margin-top: 2.5rem;
     height: 70vh;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+}
+
+
+.status {
+    margin-top: 1rem;
 }
 
 .formdiv {

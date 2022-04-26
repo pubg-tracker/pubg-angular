@@ -43,9 +43,9 @@ export class ListItemComponent implements OnInit {
     else if (this.parent === 'matches') {
       console.log(this.user.userId);
       this.matchService.addToFav(new Match(this.id, this.date, this.user.userId)).subscribe((data: any) => {
-        console.log(data);
+        // console.log(data);
+        this.router.navigate(['favourite-matches']);
       });
-      this.router.navigate(['favourite-matches']);
     }
     else {
       this.matchService.deleteFromFav(this.id).subscribe((data: any) => {

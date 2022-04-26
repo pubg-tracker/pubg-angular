@@ -5,11 +5,11 @@
     <div class="formdiv">
         <div class="login-card">
             <div class="login-body">
-                <div class="text-center card-title">
+                <div class="text-center card-title login-title">
                     <h3>Login</h3>
                 </div>
 
-                <form class="card-text" userForm="ngForm" action="#" method="#">
+                <form class="card-text" #userForm="ngForm" action="#" method="#">
                     <div class="form-group">
                         <!-- <label for="email">email</label> -->
                         <input type="email" #email="ngModel" [class.is-invalid]="email.invalid && email.touched"
@@ -32,8 +32,9 @@
                         <div *ngIf="password.errors && (password.invalid && password.touched)">
                             <small class="text-danger" *ngIf="password.errors?.['required']">Password is
                                 required</small>
-                            <small class="text-danger" *ngIf="password.errors?.['pattern']">Password doesn't
-                                exist</small>
+                            <small class="text-danger" *ngIf="password.errors?.['pattern']">Password must be
+                                minimum eight characters, at least one upper case English letter, one lower case English
+                                letter, one number and one special character</small>
                         </div>
                     </div>
                     <div class="form-check">
@@ -47,6 +48,8 @@
                         <button (click)="validateUser()" type="submit" class="btn btn-primary">Login</button>
                         <a class="stol" href="" routerLink="/signup">Sign up</a>
                     </div>
+
+                    <div *ngIf="invalidInput" class="status">Password and Email doesnt match</div>
                 </form>
 
             </div>

@@ -36,12 +36,13 @@ export class UserServiceService {
   updateUser(user: any, file: File) {
     const formData: FormData = new FormData();
     console.log('user = ', user);
-    console.log(file);
+    // console.log(file);
     formData.append('userId', user.userId);
     formData.append('userName', user.userName);
     formData.append('emailAddress', user.emailAddress);
     formData.append('password', user.password);
     formData.append('data', file);
+    // formData.append('isFileThere', isFileThere);
     return this.http.put(this.editUrl, formData);
   }
 

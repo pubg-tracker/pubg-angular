@@ -40,6 +40,8 @@
 
 .section__img {
     position: absolute;
+    width: 200px;
+    object-fit: cover;
 }
 
 /* .section__banner:first-child {
@@ -51,7 +53,8 @@
 }
 
 .img2 {
-    top: 200px;
+    top: 250px;
+    left: 100px;
 }
 
 .img3 {

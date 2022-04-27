@@ -1,0 +1,38 @@
+.section__action {
+    background-color: var(--clr-primary);
+    /* display: block; */
+    color: inherit;
+    border: none;
+    padding: 0.4rem 1.5rem;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    border-radius: 1.4rem;
+    text-decoration: none;
+}
+
+
+.banner {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.banner__img {
+    width: 20%;
+    margin: 0 auto;
+    margin-bottom: 3rem;
+}
+
+.banner__img img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.banner__text {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}

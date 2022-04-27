@@ -1,0 +1,72 @@
+<div>
+
+    <div class="selector">
+        <div class="select">
+            <select (change)="onTableSizeChange($event)" class="custom-select">
+                <option *ngFor="let size of tableSizes">
+                    {{ size }}
+                </option>
+            </select>
+        </div>
+    </div>
+    <div *ngIf="parent==='matches' || parent==='favourite-matches'" class="player__list lists">
+        <div *ngIf="loading" class="loading">
+            <img src="../../assets/Spinner-1s-200px.svg" alt="">
+        </div>
+        <div *ngFor="let post of POSTS | paginate : {
+            itemsPerPage: tableSize,
+            currentPage: page,
+            totalItems: count
+          };
+    let i = index">
+            <div class="list__item">
+                <img (click)="navigateTo(post)" src="../../assets/player_icon.svg" alt="playericon" class="list__img">
+                <div class="list__detail">
+                    <p>Name: {{ post.attributes.stats.name }}</p>
+                    <p>kills: {{ post.attributes.stats.kills }}</p>
+                    <div class="list__action">
+                        <button class="list__btn"
+                            (click)="doAction(post.id,post.attributes.stats.name,post.attributes.stats.kills)">
+                            <span class="material-icons">
+                                {{iconType}}
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="parent==='global-players' || parent==='favourite-players'" class="player__list lists">
+        <div *ngIf="loading" class="loading">
+            <img src="../../assets/Spinner-1s-200px.svg" alt="">
+        </div>
+        <div *ngFor="let post of POSTS | paginate : {
+            itemsPerPage: tableSize,
+            currentPage: page,
+            totalItems: count
+          };
+    let i = index">
+            <div class="list__item">
+                <img (click)="navigateTo(post)" src="../../assets/player_icon.svg" alt="playericon" class="list__img">
+                <div class="list__detail">
+                    <p>Name: {{ post.name }}</p>
+                    <p>kills: {{ post.kills }}</p>
+                    <div class="list__action">
+                        <button class="list__btn" (click)="doAction(post.id,post.name,post.kills)">
+                            <span class="material-icons">
+                                {{iconType}}
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer__list">
+        <pagination-controls (responsive)="responsiveP" previousLabel="Prev" nextLabel="Next"
+            (pageChange)="onTableDataChange($event)">
+        </pagination-controls>
+    </div>
+
+</div>
